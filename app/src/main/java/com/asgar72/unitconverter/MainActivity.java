@@ -1,16 +1,21 @@
 package com.asgar72.unitconverter;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
+
+import com.asgar72.unitconverter.Calculator.CalculatorActivity;
 import com.asgar72.unitconverter.Unit.Area_Activity;
 import com.asgar72.unitconverter.Unit.Length_Activity;
 import com.asgar72.unitconverter.Unit.Storage_Activity;
 import com.asgar72.unitconverter.Unit.Time_Activity;
 import com.asgar72.unitconverter.Unit.Weight_Activity;
 import com.asgar72.unitconverter.Unit.temp_Activity;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -75,5 +80,31 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(ob);
             }
         });
+
+
+
+        BottomNavigationView bottomNavigationView=findViewById(R.id.bottomNavigationView);
+
+        // Set Home selected
+        bottomNavigationView.setSelectedItemId(R.id.home);
+
+        // Perform item selected listener
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
+                switch (item.getItemId()) {
+                    case R.id.calc:
+                        startActivity(new Intent(getApplicationContext(), CalculatorActivity.class));
+                        finish();
+                        overridePendingTransition(0, 0);
+                        return true;
+                    case R.id.home:
+                        return true;
+                }
+                return true;
+            }
+        });
+
     }
 }
