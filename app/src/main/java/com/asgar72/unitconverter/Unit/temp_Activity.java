@@ -16,7 +16,6 @@ public class temp_Activity extends AppCompatActivity {
     EditText txt_C, txt_F, txt_K, txt_R;
     Button btn_clear;
 
-    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
