@@ -83,7 +83,7 @@ public class temp_Activity extends AppCompatActivity {
                 txt_F.setText("");
                 txt_K.setText("");
                 txt_R.setText("");
-                parentLayout.setBackgroundResource(R.color.black_shade_3); // Change background color here
+                parentLayout.setBackgroundResource(R.drawable.tempbackk); // Change background color here
             }
         });
 
