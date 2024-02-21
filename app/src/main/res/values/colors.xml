@@ -17,6 +17,9 @@
     <color name="blac_shade_1">#34495e</color>
     <color name="black_shade_2">#272B33</color>
     <color name="black_shade_3">#34495e</color>
+    <color name="blue">#74b9ff</color>
+    <color name="light_red">#FF474C</color>
+    <color name="snow_white">#fffafa</color>
 
 
 </resources>

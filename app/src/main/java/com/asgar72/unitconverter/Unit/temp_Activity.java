@@ -2,13 +2,13 @@ package com.asgar72.unitconverter.Unit;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 
 import com.asgar72.unitconverter.R;
 
@@ -16,6 +16,8 @@ public class temp_Activity extends AppCompatActivity {
 
     EditText txt_C, txt_F, txt_K, txt_R;
     Button btn_clear;
+    LinearLayout parentLayout;
+    boolean isIncreasingMode = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,8 +28,9 @@ public class temp_Activity extends AppCompatActivity {
         txt_K = findViewById(R.id.txt_K);
         txt_R = findViewById(R.id.txt_R);
         btn_clear = findViewById(R.id.btn_clear);
+        parentLayout = findViewById(R.id.parentLayout);
 
-        // Add onFocusChangeListeners to dynamically change background color
+        // Set onFocusChangeListeners to dynamically change background color
         txt_C.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
@@ -80,6 +83,7 @@ public class temp_Activity extends AppCompatActivity {
                 txt_F.setText("");
                 txt_K.setText("");
                 txt_R.setText("");
+                parentLayout.setBackgroundResource(R.color.black_shade_3); // Change background color here
             }
         });
 
@@ -108,8 +112,21 @@ public class temp_Activity extends AppCompatActivity {
             txt_F.addTextChangedListener(fahrenheitTextWatcher);
             txt_K.addTextChangedListener(kelvinTextWatcher);
             txt_R.addTextChangedListener(rankineTextWatcher);
+
+            // Change background color based on the input value
+            if (s.length() > 0) {
+                double celsius = Double.parseDouble(s.toString());
+                if (celsius < 0) {
+                    parentLayout.setBackgroundColor(getResources().getColor(R.color.snow_white));
+                } else {
+                    parentLayout.setBackgroundColor(getResources().getColor(R.color.light_red));
+                }
+            } else {
+                parentLayout.setBackgroundColor(getResources().getColor(android.R.color.transparent));
+            }
         }
     };
+
 
     TextWatcher fahrenheitTextWatcher = new TextWatcher() {
         @Override
@@ -122,6 +139,17 @@ public class temp_Activity extends AppCompatActivity {
 
         @Override
         public void afterTextChanged(Editable s) {
+            if (s.length() > 0) {
+                double fahrenheit = Double.parseDouble(s.toString());
+                double celsius = (fahrenheit - 32) * 5 / 9;
+                if (celsius < 0) {
+                    parentLayout.setBackgroundColor(getResources().getColor(R.color.snow_white));
+                } else {
+                    parentLayout.setBackgroundColor(getResources().getColor(R.color.light_red));
+                }
+            } else {
+                parentLayout.setBackgroundColor(getResources().getColor(android.R.color.transparent));
+            }
             txt_C.removeTextChangedListener(celsiusTextWatcher);
             txt_K.removeTextChangedListener(kelvinTextWatcher);
             txt_R.removeTextChangedListener(rankineTextWatcher);
@@ -131,6 +159,7 @@ public class temp_Activity extends AppCompatActivity {
             txt_R.addTextChangedListener(rankineTextWatcher);
         }
     };
+
 
     TextWatcher kelvinTextWatcher = new TextWatcher() {
         @Override
@@ -143,6 +172,17 @@ public class temp_Activity extends AppCompatActivity {
 
         @Override
         public void afterTextChanged(Editable s) {
+            if (s.length() > 0) {
+                double kelvin = Double.parseDouble(s.toString());
+                double celsius = kelvin - 273.15;
+                if (celsius < 0) {
+                    parentLayout.setBackgroundColor(getResources().getColor(R.color.snow_white));
+                } else {
+                    parentLayout.setBackgroundColor(getResources().getColor(R.color.light_red));
+                }
+            } else {
+                parentLayout.setBackgroundColor(getResources().getColor(android.R.color.transparent));
+            }
             txt_C.removeTextChangedListener(celsiusTextWatcher);
             txt_F.removeTextChangedListener(fahrenheitTextWatcher);
             txt_R.removeTextChangedListener(rankineTextWatcher);
@@ -164,6 +204,17 @@ public class temp_Activity extends AppCompatActivity {
 
         @Override
         public void afterTextChanged(Editable s) {
+            if (s.length() > 0) {
+                double rankine = Double.parseDouble(s.toString());
+                double celsius = (rankine - 491.67) * 5 / 9;
+                if (celsius < 0) {
+                    parentLayout.setBackgroundColor(getResources().getColor(R.color.snow_white));
+                } else {
+                    parentLayout.setBackgroundColor(getResources().getColor(R.color.light_red));
+                }
+            } else {
+                parentLayout.setBackgroundColor(getResources().getColor(android.R.color.transparent));
+            }
             txt_C.removeTextChangedListener(celsiusTextWatcher);
             txt_F.removeTextChangedListener(fahrenheitTextWatcher);
             txt_K.removeTextChangedListener(kelvinTextWatcher);
@@ -173,6 +224,7 @@ public class temp_Activity extends AppCompatActivity {
             txt_K.addTextChangedListener(kelvinTextWatcher);
         }
     };
+
 
     void convertCelsius() {
         String celsiusString = txt_C.getText().toString();
