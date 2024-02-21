@@ -44,7 +44,6 @@ public class Storage_Activity extends AppCompatActivity {
             }
         });
 
-
         txt_bt.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -147,6 +146,7 @@ public class Storage_Activity extends AppCompatActivity {
         public void beforeTextChanged(CharSequence s, int start, int count, int after) {
             // Not needed
         }
+
         @Override
         public void onTextChanged(CharSequence s, int start, int before, int count) {
             // Not needed
@@ -175,7 +175,7 @@ public class Storage_Activity extends AppCompatActivity {
             txt_mb.setText(String.format("%.2f MB", megabytes));
             double gigabyte = (megabytes / 1024.0);
             txt_gb.setText(String.format("%.2f GB", gigabyte));
-            double terabyte = (gigabyte /1024.0);
+            double terabyte = (gigabyte / 1024.0);
             txt_tb.setText(String.format("%.2f TB", terabyte));
         }
     }
@@ -190,7 +190,7 @@ public class Storage_Activity extends AppCompatActivity {
             txt_mb.setText(String.format("%.2f MB", megabytes));
             double gigabyte = (megabytes / 1024.0);
             txt_gb.setText(String.format("%.2f GB", gigabyte));
-            double terabyte = (gigabyte /1024.0);
+            double terabyte = (gigabyte / 1024.0);
             txt_tb.setText(String.format("%.2f TB", terabyte));
         }
     }
@@ -205,7 +205,7 @@ public class Storage_Activity extends AppCompatActivity {
             txt_kb.setText(String.format("%.2f KB", kilobytes));
             double gigabyte = (megabytes / 1024.0);
             txt_gb.setText(String.format("%.2f GB", gigabyte));
-            double terabyte = (gigabyte /1048576.0);
+            double terabyte = (gigabyte / 1048576.0);
             txt_tb.setText(String.format("%.2f TB", terabyte));
         }
     }

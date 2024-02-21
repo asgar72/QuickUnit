@@ -3,6 +3,7 @@ package com.asgar72.unitconverter;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -19,12 +20,16 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {
 
-    CardView temp,storage,kilogram,time,area,length;
+    CardView temp, storage, kilogram, time, area, length;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        try { this.getSupportActionBar().hide(); } catch (NullPointerException e) { }
+        try {
+            this.getSupportActionBar().hide();
+        } catch (NullPointerException e) {
+        }
 
         temp = findViewById(R.id.temp);
         storage = findViewById(R.id.storage);
@@ -82,8 +87,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-
-        BottomNavigationView bottomNavigationView=findViewById(R.id.bottomNavigationView);
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationView);
 
         // Set Home selected
         bottomNavigationView.setSelectedItemId(R.id.home);

@@ -13,7 +13,7 @@ import com.asgar72.unitconverter.R;
 
 
 public class Length_Activity extends AppCompatActivity {
-    EditText txt_mt,txt_km,txt_in,txt_ft1,txt_y ;
+    EditText txt_mt, txt_km, txt_in, txt_ft1, txt_y;
     Button btn_Clear;
 
     @Override
@@ -197,22 +197,22 @@ public class Length_Activity extends AppCompatActivity {
     };
 
 
-
-    void convertMtr(){
+    void convertMtr() {
         String mtrString = txt_mt.getText().toString();
-        if(!mtrString.isEmpty() && !mtrString.endsWith("m")){
+        if (!mtrString.isEmpty() && !mtrString.endsWith("m")) {
             double mtr = Double.parseDouble(mtrString);
-            double km = mtr /1000;
-            txt_km.setText(String.format("%.2f km",km));
-            double in = mtr /0.0254;
-            txt_in.setText(String.format("%.2f in",in));
-            double ft = mtr /0.3048;
-            txt_ft1.setText(String.format("%.2f ft",ft));
-            double yard = mtr /0.9144;
-            txt_y.setText(String.format("%.2f y",yard));
+            double km = mtr / 1000;
+            txt_km.setText(String.format("%.2f km", km));
+            double in = mtr / 0.0254;
+            txt_in.setText(String.format("%.2f in", in));
+            double ft = mtr / 0.3048;
+            txt_ft1.setText(String.format("%.2f ft", ft));
+            double yard = mtr / 0.9144;
+            txt_y.setText(String.format("%.2f y", yard));
         }
     }
-    void  convertKm() {
+
+    void convertKm() {
         String kmString = txt_km.getText().toString();
         if (!kmString.isEmpty() && !kmString.endsWith("km")) {
             double km = Double.parseDouble(kmString);
@@ -226,7 +226,8 @@ public class Length_Activity extends AppCompatActivity {
             txt_y.setText(String.format("%.2f y", yard));
         }
     }
-    void  convertIn() {
+
+    void convertIn() {
         String inString = txt_in.getText().toString();
         if (!inString.isEmpty() && !inString.endsWith("in")) {
             double in = Double.parseDouble(inString);
@@ -240,7 +241,8 @@ public class Length_Activity extends AppCompatActivity {
             txt_y.setText(String.format("%.2f y", yard));
         }
     }
-    void convertFeet(){
+
+    void convertFeet() {
         String ftString = txt_ft1.getText().toString();
         if (!ftString.isEmpty() && !ftString.endsWith("ft")) {
             double ft = Double.parseDouble(ftString);
@@ -254,7 +256,8 @@ public class Length_Activity extends AppCompatActivity {
             txt_y.setText(String.format("%.2f y", yard));
         }
     }
-    void convertYard(){
+
+    void convertYard() {
         String yardString = txt_y.getText().toString();
         if (!yardString.isEmpty() && !yardString.endsWith("y")) {
             double yard = Double.parseDouble(yardString);

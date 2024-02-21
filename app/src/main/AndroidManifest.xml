@@ -12,10 +12,11 @@
         android:theme="@style/Theme.UnitConverter"
         tools:targetApi="31">
         <activity
+            android:name=".Calculator.HistoryActivity"
+            android:exported="false" />
+        <activity
             android:name=".Calculator.CalculatorActivity"
-            android:exported="false">
-
-        </activity>
+            android:exported="false"></activity>
         <activity
             android:name=".Unit.Weight_Activity"
             android:exported="false" />

@@ -4,10 +4,13 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.asgar72.unitconverter.MainActivity;
@@ -17,21 +20,30 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import org.mozilla.javascript.Context;
 import org.mozilla.javascript.Scriptable;
 
+import java.util.ArrayList;
+import java.util.HashSet;
+
 public class CalculatorActivity extends AppCompatActivity {
 
-    Button btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8, btn9, btn0,btn00,
-           btnClear, btnMod, btnDel, btnDiv, btnMul, btnSub, btnAdd, btnDot, btnEqual;
-    TextView OutputTxt, inputTxt;
+    // Declare ArrayList to store calculations
+    ArrayList<String> calculations = new ArrayList<>();
 
+    Button btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8, btn9, btn0, btn00,
+            btnClear, btnMod, btnDel, btnDiv, btnMul, btnSub, btnAdd, btnEqual;
+    TextView OutputTxt, inputTxt;
     String data;
+    ImageView btnHistory;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calculator);
-        try { this.getSupportActionBar().hide(); } catch (NullPointerException e) { }
+        try {
+            this.getSupportActionBar().hide();
+        } catch (NullPointerException e) {
+        }
 
-
+        btnHistory = findViewById(R.id.btnHistory);
         btn2 = findViewById(R.id.btn2);
         btn1 = findViewById(R.id.btn1);
         btn1 = findViewById(R.id.btn1);
@@ -44,7 +56,6 @@ public class CalculatorActivity extends AppCompatActivity {
         btn9 = findViewById(R.id.btn9);
         btn0 = findViewById(R.id.btn0);
         btn00 = findViewById(R.id.btn00);
-        btnDot = findViewById(R.id.btnDot);
         btnAdd = findViewById(R.id.btnAdd);
         btnClear = findViewById(R.id.btnClear);
         btnMod = findViewById(R.id.btnMod);
@@ -55,6 +66,10 @@ public class CalculatorActivity extends AppCompatActivity {
         btnEqual = findViewById(R.id.btnEqual);
         inputTxt = findViewById(R.id.inputTxt);
         OutputTxt = findViewById(R.id.OutputTxt);
+
+        // Inside onCreate() or wherever you initialize your ArrayList
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        calculations = new ArrayList<>(sharedPreferences.getStringSet("calculations", new HashSet<>()));
 
         btn1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -152,13 +167,13 @@ public class CalculatorActivity extends AppCompatActivity {
             }
         });
 
-        btnDot.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                data = inputTxt.getText().toString();
-                inputTxt.setText(data + ".");
-            }
-        });
+//        btnDot.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                data = inputTxt.getText().toString();
+//                inputTxt.setText(data + ".");
+//            }
+//        });
 
         btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -212,32 +227,44 @@ public class CalculatorActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 data = inputTxt.getText().toString();
-
                 data = data.replaceAll("×", "*");
                 data = data.replaceAll("%", "/100");
                 data = data.replaceAll("÷", "/");
 
                 Context rhino = Context.enter();
                 rhino.setOptimizationLevel(-1);
-
                 String finalResult = "";
-
                 Scriptable scriptable = rhino.initSafeStandardObjects();
                 finalResult = rhino.evaluateString(scriptable, data, "Javascript", 1, null).toString();
-
                 OutputTxt.setText(finalResult);
 
-                //Toast.makeText(MainActivity.this,""+data,Toast.LENGTH_SHORT).show();
-                //Log.e("@@@@@","onClick: "+data); // this is like toast
+                // Create a string that contains both the user input and the solution
+                String calculation = data + " = " + finalResult;
+
+                // Add the calculation string to the ArrayList
+                calculations.add(calculation);
+
+                // Save the updated calculations ArrayList to SharedPreferences
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                editor.putStringSet("calculations", new HashSet<>(calculations));
+                editor.apply();
             }
         });
 
 
-        BottomNavigationView bottomNavigationView=findViewById(R.id.bottomNavigationView);
+        btnHistory.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(CalculatorActivity.this, HistoryActivity.class);
+                intent.putStringArrayListExtra("calculations", calculations); // Assuming calculations is your ArrayList<String>
+                startActivity(intent);
+            }
+        });
 
+
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationView);
         // Set calc selected
         bottomNavigationView.setSelectedItemId(R.id.calc);
-
         // Perform item selected listener
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override

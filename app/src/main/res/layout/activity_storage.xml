@@ -4,127 +4,136 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Units.Storage_Activity"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:context=".Units.Storage_Activity">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/top_background_gradient">
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_margin="5dp"
             android:gravity="center"
             android:text="Storage"
-            android:textStyle="bold"
             android:textColor="@color/white"
             android:textSize="30sp"
-            android:layout_margin="5dp"/>
+            android:textStyle="bold" />
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_margin="20dp">
+        android:layout_margin="20dp"
+        android:orientation="vertical">
+
         <EditText
             android:id="@+id/txt_bt"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="20dp"
             android:background="@drawable/unit_back"
-            android:padding="10dp"
-            android:gravity="right"
             android:drawableLeft="@drawable/b_t"
             android:drawablePadding="10dp"
+            android:gravity="right"
             android:hint="0"
-            android:inputType="number"/>
+            android:inputType="number"
+            android:padding="10dp"
+            android:textSize="20dp" />
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_margin="20dp">
+        android:layout_margin="20dp"
+        android:orientation="vertical">
+
         <EditText
             android:id="@+id/txt_kb"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="20dp"
             android:background="@drawable/unit_back"
-            android:padding="10dp"
-            android:gravity="right"
             android:drawableLeft="@drawable/k_b"
             android:drawablePadding="10dp"
+            android:gravity="right"
             android:hint="0"
-            android:inputType="number"/>
+            android:inputType="number"
+            android:padding="10dp"
+            android:textSize="20dp" />
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_margin="20dp">
+        android:layout_margin="20dp"
+        android:orientation="vertical">
+
         <EditText
             android:id="@+id/txt_mb"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="20dp"
             android:background="@drawable/unit_back"
-            android:padding="10dp"
-            android:gravity="right"
             android:drawableLeft="@drawable/m_b"
             android:drawablePadding="10dp"
+            android:gravity="right"
             android:hint="0"
-            android:inputType="number"/>
+            android:inputType="number"
+            android:padding="10dp"
+            android:textSize="20dp" />
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
         android:layout_margin="20dp"
-        >
+        android:orientation="vertical">
+
         <EditText
             android:id="@+id/txt_gb"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="20dp"
             android:background="@drawable/unit_back"
-            android:padding="10dp"
-            android:gravity="right"
             android:drawableLeft="@drawable/g_b"
             android:drawablePadding="10dp"
+            android:gravity="right"
             android:hint="0"
-            android:inputType="number"/>
+            android:inputType="number"
+            android:padding="10dp"
+            android:textSize="20dp" />
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
         android:layout_margin="20dp"
-        >
+        android:orientation="vertical">
+
         <EditText
             android:id="@+id/txt_tb"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="20dp"
             android:background="@drawable/unit_back"
-            android:padding="10dp"
-            android:gravity="right"
             android:drawableLeft="@drawable/t_b"
             android:drawablePadding="10dp"
+            android:gravity="right"
             android:hint="0"
-            android:inputType="number"/>
+            android:inputType="number"
+            android:padding="10dp"
+            android:textSize="20dp" />
     </LinearLayout>
+
     <Button
         android:id="@+id/btn_clear"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Clear"
-        android:textSize="20dp"
         android:layout_gravity="right"
         android:layout_margin="20dp"
-        android:textAllCaps="false"
-        android:padding="5dp"
         android:background="@drawable/unit_back"
-        />
-
+        android:padding="5dp"
+        android:text="Clear"
+        android:textAllCaps="false"
+        android:textSize="20dp" />
 
 
 </LinearLayout>

@@ -14,7 +14,7 @@ import com.asgar72.unitconverter.R;
 
 public class Area_Activity extends AppCompatActivity {
 
-    EditText txt_m2,txt_feet,txt_yt,txt_ac,txt_ha;
+    EditText txt_m2, txt_feet, txt_yt, txt_ac, txt_ha;
     Button btn_clear;
 
     @Override
@@ -68,7 +68,6 @@ public class Area_Activity extends AppCompatActivity {
         txt_ac.addTextChangedListener(AcTextWatcher);
         txt_ha.addTextChangedListener(HaTextWatcher);
     }
-
 
 
     TextWatcher M2TextWatcher = new TextWatcher() {
@@ -199,26 +198,26 @@ public class Area_Activity extends AppCompatActivity {
     };
 
 
-
-    void convertM2(){
+    void convertM2() {
         String m2String = txt_m2.getText().toString();
-        if(!m2String.isEmpty() && !m2String.endsWith("m²")){
+        if (!m2String.isEmpty() && !m2String.endsWith("m²")) {
             double m2 = Double.parseDouble(m2String);
             double feet = m2 * 10.764;
-            txt_feet.setText(String.format("%.2f ft²",feet));
+            txt_feet.setText(String.format("%.2f ft²", feet));
             double yt = m2 * 1.196;
-            txt_yt.setText(String.format("%.2f yt²",yt));
+            txt_yt.setText(String.format("%.2f yt²", yt));
             double ac = m2 * 0.0002471;
-            txt_ac.setText(String.format("%.2f ac",ac));
-            double ha = m2 *0.0001;
-            txt_ha.setText(String.format("%.2f ha",ha));
+            txt_ac.setText(String.format("%.2f ac", ac));
+            double ha = m2 * 0.0001;
+            txt_ha.setText(String.format("%.2f ha", ha));
         }
     }
-    void convertFeet(){
+
+    void convertFeet() {
         String feetString = txt_feet.getText().toString();
-        if(!feetString.isEmpty() && !feetString.endsWith("ft²")) {
+        if (!feetString.isEmpty() && !feetString.endsWith("ft²")) {
             double feet2 = Double.parseDouble(feetString);
-            double m2 = feet2  / 10.764;
+            double m2 = feet2 / 10.764;
             txt_m2.setText(String.format("%.2f m²", m2));
             double yt = feet2 / 9;
             txt_yt.setText(String.format("%.2f yt²", yt));
@@ -228,11 +227,12 @@ public class Area_Activity extends AppCompatActivity {
             txt_ha.setText(String.format("%.2f ha", ha));
         }
     }
-    void convertYt(){
+
+    void convertYt() {
         String ytString = txt_yt.getText().toString();
-        if(!ytString.isEmpty() && !ytString.endsWith("yt²")) {
+        if (!ytString.isEmpty() && !ytString.endsWith("yt²")) {
             double yt2 = Double.parseDouble(ytString);
-            double m2 = yt2  * 0.83612736;
+            double m2 = yt2 * 0.83612736;
             txt_m2.setText(String.format("%.2f m²", m2));
             double feet = yt2 * 9;
             txt_feet.setText(String.format("%.2f ft²", feet));
@@ -242,11 +242,12 @@ public class Area_Activity extends AppCompatActivity {
             txt_ha.setText(String.format("%.2f ha", ha));
         }
     }
-    void convertAc(){
+
+    void convertAc() {
         String acString = txt_ac.getText().toString();
-        if(!acString.isEmpty() && !acString.endsWith("ac")) {
+        if (!acString.isEmpty() && !acString.endsWith("ac")) {
             double ac = Double.parseDouble(acString);
-            double m2 = ac  * 4046.86;
+            double m2 = ac * 4046.86;
             txt_m2.setText(String.format("%.2f m²", m2));
             double feet = ac * 43560;
             txt_feet.setText(String.format("%.2f ft²", feet));
@@ -256,11 +257,12 @@ public class Area_Activity extends AppCompatActivity {
             txt_ha.setText(String.format("%.2f ha", ha));
         }
     }
-    void convertHa(){
+
+    void convertHa() {
         String haString = txt_ha.getText().toString();
-        if(!haString.isEmpty() && !haString.endsWith("ha")) {
+        if (!haString.isEmpty() && !haString.endsWith("ha")) {
             double ha = Double.parseDouble(haString);
-            double m2 = ha  * 10000;
+            double m2 = ha * 10000;
             txt_m2.setText(String.format("%.2f m²", m2));
             double feet = ha * 107639.1;
             txt_feet.setText(String.format("%.2f ft²", feet));

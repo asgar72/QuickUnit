@@ -9,6 +9,7 @@ import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+
 import com.asgar72.unitconverter.R;
 
 
@@ -241,6 +242,7 @@ public class Time_Activity extends AppCompatActivity {
             txt_day.setText(String.format("%.2f d", day));
         }
     }
+
     void convertMs() {
         String msString = txt_ms.getText().toString();
         if (!msString.isEmpty() && !msString.endsWith("ms")) {
@@ -251,19 +253,20 @@ public class Time_Activity extends AppCompatActivity {
             txt_min.setText(String.format("%.2f min", min));
             double sec = ms / 1000;
             txt_sec.setText(String.format("%.2f s", sec));
-            double day = ms /  (1000 * 60 * 60 * 24);
+            double day = ms / (1000 * 60 * 60 * 24);
             txt_day.setText(String.format("%.2f d", day));
         }
     }
-    void convertDay () {
+
+    void convertDay() {
         String dayString = txt_day.getText().toString();
         if (!dayString.isEmpty() && !dayString.endsWith("d")) {
             double day = Double.parseDouble(dayString);
-            double hrs = day * 24 ;
+            double hrs = day * 24;
             txt_hr.setText(String.format("%.2f h", hrs));
             double min = day * 24 * 60;
             txt_min.setText(String.format("%.2f min", min));
-            double sec = day  * 24 * 60 * 60;
+            double sec = day * 24 * 60 * 60;
             txt_sec.setText(String.format("%.2f s", sec));
             double ms = day * 24 * 60 * 60 * 1000;
             txt_ms.setText(String.format("%.2f ms", ms));
